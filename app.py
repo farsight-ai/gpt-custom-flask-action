@@ -11,6 +11,8 @@ CORS(app, supports_credentials=True)
 def health_check():
     return make_response("Healthy.", 200)
 
+# This is not included in the blog for simplicity's sake, but cleans up
+# the content a bit before sending it back to the GPT.
 def remove_html_tags_and_whitespace(html):
     content = re.sub(r"\<.*?\>|[\t\n]", "", html)
     return content
