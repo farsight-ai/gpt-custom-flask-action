@@ -13,9 +13,7 @@ def health_check():
 # Fetches HTML from any given url. Expects the url to be a query parameter.
 @app.route('/fetch-html', methods=["GET"])
 def fetch_html():
-    print(request.args)
     url = request.args.get('url')
-    print(url)
     page = requests.get(url)
     html_text = page.text
     encoded_html = html_text.encode(page.encoding)
@@ -24,4 +22,4 @@ def fetch_html():
     return make_response({"html": decoded_html}, 200)
 
 if __name__ == "__main__":
-    app.run('127.0.0.1', port=5000)
+    app.run('0.0.0.0', port=5000)
